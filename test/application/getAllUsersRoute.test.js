@@ -6,7 +6,7 @@ const app = require('../../src/app.js')
 
 chai.use(chaiHttp)
 
-describe('Testing de la ruta de creacion de usuarios', () => {
+describe('Testing de la ruta de obtener todos los usuarios', () => {
     it('La respuesta debe tener un status 200', (done) => {
         chai.request(app)
             .get('/users')
