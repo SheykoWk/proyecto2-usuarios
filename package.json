@@ -1,0 +1,48 @@
+{
+    "name": "template-ci-cd",
+    "version": "1.0.0",
+    "main": "./src/app.js",
+    "repository": {
+        "url": "https://github.com/SheykoWk/ci-cd-template-projects"
+    },
+    "scripts": {
+        "start": "node ./src/app.js",
+        "dev": "nodemon ./src/app.js",
+        "test": "mocha ./test/**/*.test.js",
+        "prepare": "husky install",
+        "husky:hook": "npx husky add .husky/pre-commit 'npm test' &&  git add .husky/pre-commit",
+        "init": "npm run prepare && npm run husky:hook"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "dependencies": {
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "uuid": "^9.0.0"
+    },
+    "devDependencies": {
+        "chai": "^4.3.7",
+        "chai-http": "^4.3.0",
+        "husky": "^8.0.3",
+        "mocha": "^10.2.0",
+        "nodemon": "^2.0.20",
+        "prettier": "^2.8.3"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "{src,test}/**/*.js": [
+            "prettier --write",
+            "git add"
+        ],
+        "src/app.js": [
+            "prettier --write",
+            "git add"
+        ]
+    }
+}
